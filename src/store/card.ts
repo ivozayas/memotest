@@ -1,65 +1,123 @@
 import { create } from "zustand";
 import { CardType } from "../../types";
 
+const cards: CardType[] = [
+    {
+        id: 'hannibal',
+        category: 'hannibal',
+        src: '/hannibal.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'will',
+        category: 'hannibal',
+        src: '/will.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'sonic',
+        category: 'sonic',
+        src: '/sonic.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'tails',
+        category: 'sonic',
+        src: '/tails.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'kakashi',
+        category: 'naruto',
+        src: '/kakashi.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'iruka',
+        category: 'naruto',
+        src: '/iruka.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'walter',
+        category: 'breaking-bad',
+        src: '/walter.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'jesse',
+        category: 'breaking-bad',
+        src: '/jesse.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'pepper',
+        category: 'smiling-friends',
+        src: '/pepper.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'salt',
+        category: 'smiling-friends',
+        src: '/salt.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'jayce',
+        category: 'arcane',
+        src: '/jayce.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'viktor',
+        category: 'arcane',
+        src: '/viktor.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'zuko',
+        category: 'avatar',
+        src: '/zuko.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'sokka',
+        category: 'avatar',
+        src: '/sokka.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'juanma',
+        category: 'millennials',
+        src: '/juanma.png',
+        flipped: false,
+        done: false,
+    },
+    {
+        id: 'rodri',
+        category: 'millennials',
+        src: '/rodri.png',
+        flipped: false,
+        done: false,
+    },
+]
+
 export const cardStore = create((set) => ({
-    cards: [
-        {
-            id: 'hannibal',
-            category: 'hannibal',
-            src: '/hannibal.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'will',
-            category: 'hannibal',
-            src: '/will.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'sonic',
-            category: 'sonic',
-            src: '/sonic.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'tails',
-            category: 'sonic',
-            src: '/tails.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'kakashi',
-            category: 'naruto',
-            src: '/kakashi.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'iruka',
-            category: 'naruto',
-            src: '/iruka.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'walter',
-            category: 'breaking-bad',
-            src: '/walter.png',
-            flipped: false,
-            done: false,
-        },
-        {
-            id: 'jesse',
-            category: 'breaking-bad',
-            src: '/jesse.png',
-            flipped: false,
-            done: false,
-        },
-    ],
+    cards: cards.sort((() => Math.random() - 0.5)),
     flippedCards: [],
     done: [],
     flipCard: (id: string) =>
@@ -120,5 +178,15 @@ export const cardStore = create((set) => ({
             
             return { cards: curFlippedCard, flippedCards }
         }),
-    evaluateCards: () => {}
+    evaluateCards: () => {},
+    resetGame: () =>
+        set((state: any) => ({
+            cards: state.cards.map((card: CardType) => ({
+                ...card,
+                flipped: false,
+                done: false,
+            })).sort((() => Math.random() - 0.5)),
+            flippedCards: [],
+            done: [],
+        }))
 }))

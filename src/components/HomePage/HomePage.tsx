@@ -1,10 +1,10 @@
-import CardsGrid from "../Cards/CardsGrid";
+import CardsGridContainer from "../Cards/CardsGridContainer";
 import PageContainer from "../Pages/PageContainer";
 
 export default function HomePage(){
     return (
         <PageContainer>
-            <CardsGrid/>
+            <CardsGridContainer/>
         </PageContainer>
     )
 }
