@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -24,7 +25,7 @@ body {
   /* background-repeat: repeat; /* Hace que la imagen se repita infinitamente */
   /* background-size: auto; /* Mantiene el tamaño original de la imagen */
   /* background-position: top left; */
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: "Tiny5", serif;
   justify-content: center;
   align-items: center;
   height: auto;
@@ -35,5 +36,21 @@ body {
 }
 
 .cardsinnerbg {
-  background: radial-gradient(circle, rgb(251, 255, 192) 30%, rgb(255, 208, 0) 100%);
+  background: radial-gradient(circle, rgb(248, 255, 150) 10%, rgb(255, 208, 0) 100%);
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }

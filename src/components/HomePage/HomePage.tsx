@@ -1,5 +1,5 @@
 import CardsGridContainer from "../Cards/CardsGridContainer";
-import PageContainer from "../Pages/PageContainer";
+import PageContainer from "./PageContainer";
 
 export default function HomePage(){
     return (

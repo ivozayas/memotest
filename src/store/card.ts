@@ -8,6 +8,7 @@ const cards: CardType[] = [
         src: '/hannibal.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'will',
@@ -15,6 +16,7 @@ const cards: CardType[] = [
         src: '/will.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'sonic',
@@ -22,6 +24,7 @@ const cards: CardType[] = [
         src: '/sonic.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'tails',
@@ -29,6 +32,7 @@ const cards: CardType[] = [
         src: '/tails.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'kakashi',
@@ -36,6 +40,7 @@ const cards: CardType[] = [
         src: '/kakashi.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'iruka',
@@ -43,6 +48,7 @@ const cards: CardType[] = [
         src: '/iruka.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'walter',
@@ -50,6 +56,7 @@ const cards: CardType[] = [
         src: '/walter.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'jesse',
@@ -57,6 +64,7 @@ const cards: CardType[] = [
         src: '/jesse.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'pepper',
@@ -64,6 +72,7 @@ const cards: CardType[] = [
         src: '/pepper.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'salt',
@@ -71,6 +80,7 @@ const cards: CardType[] = [
         src: '/salt.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'jayce',
@@ -78,6 +88,7 @@ const cards: CardType[] = [
         src: '/jayce.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'viktor',
@@ -85,6 +96,7 @@ const cards: CardType[] = [
         src: '/viktor.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'zuko',
@@ -92,6 +104,7 @@ const cards: CardType[] = [
         src: '/zuko.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'sokka',
@@ -99,6 +112,7 @@ const cards: CardType[] = [
         src: '/sokka.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'juanma',
@@ -106,6 +120,7 @@ const cards: CardType[] = [
         src: '/juanma.png',
         flipped: false,
         done: false,
+        show: false,
     },
     {
         id: 'rodri',
@@ -113,6 +128,23 @@ const cards: CardType[] = [
         src: '/rodri.png',
         flipped: false,
         done: false,
+        show: false,
+    },
+    {
+        id: 'enderman',
+        category: 'minecraft',
+        src: '/enderman.png',
+        flipped: false,
+        done: false,
+        show: false,
+    },
+    {
+        id: 'golem',
+        category: 'minecraft',
+        src: '/golem.png',
+        flipped: false,
+        done: false,
+        show: false,
     },
 ]
 
@@ -120,6 +152,7 @@ export const cardStore = create((set) => ({
     cards: cards.sort((() => Math.random() - 0.5)),
     flippedCards: [],
     done: [],
+    won: false,
     flipCard: (id: string) =>
         set((state: any) => {
             if (state.flippedCards.length >= state.done.length + 2) {
@@ -141,7 +174,6 @@ export const cardStore = create((set) => ({
                 ...state.cards.filter((card: CardType) => card.id === id && !state.flippedCards.some((fc: CardType) => fc.id === card.id))
             ]
 
-            // transformar en funcion auxiliar (evaluateCards)
             if (flippedCards.length === state.done.length + 2) {
                 const [card1, card2] = flippedCards.slice(flippedCards.length - 2, flippedCards.length)
                 
@@ -151,13 +183,17 @@ export const cardStore = create((set) => ({
                     )
 
                     const updatedCard1 = updatedCards.find((card: CardType) => card.id === card1.id)!
-
                     const updatedCard2 = updatedCards.find((card: CardType) => card.id === card2.id)!
+
+                    const newDone = [...state.done, updatedCard1, updatedCard2]
+
+                    const won = newDone.length === state.cards.length;
 
                     return {
                         cards: updatedCards,
-                        done: [...state.done, updatedCard1, updatedCard2],
-                        flippedCards: [...state.flippedCards, updatedCard1]
+                        done: newDone,
+                        flippedCards: [...state.flippedCards, updatedCard1],
+                        won, // Actualizamos el valor de "won"
                     }
                 } else {
                     setTimeout(() => {
@@ -165,20 +201,18 @@ export const cardStore = create((set) => ({
                             cards: state.cards.map((card: CardType) =>
                                 card.id === card1.id || card.id === card2.id ? { ...card, flipped: false} : card
                             ),
-                            flippedCards: state.flippedCards.slice(0, -2) // no tengo que limpiarlo, sino quitar la última (la actual no la agregué aún)
+                            flippedCards: state.flippedCards.slice(0, -2)
                         }))
                     }, 500)
                 }
             }
 
-            // no llegué a dos cartas dadas vueltas
             const curFlippedCard = state.cards.map((card: CardType) => 
                 card.id === id ? { ...card, flipped: !card.flipped } : card
             )
             
             return { cards: curFlippedCard, flippedCards }
         }),
-    evaluateCards: () => {},
     resetGame: () =>
         set((state: any) => ({
             cards: state.cards.map((card: CardType) => ({
@@ -188,5 +222,6 @@ export const cardStore = create((set) => ({
             })).sort((() => Math.random() - 0.5)),
             flippedCards: [],
             done: [],
+            won: false
         }))
 }))

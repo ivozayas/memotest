@@ -1,5 +1,5 @@
 export default function PageContainer({ children }: { children: React.ReactNode }){
     return (
-        <div className="w-[100vw] h-[100vh] flex justify-center p-8">{children}</div>
+        <div className="w-[100vw] h-[100vh] flex justify-center p-6">{children}</div>
     )
 }
