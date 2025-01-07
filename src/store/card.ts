@@ -8,7 +8,6 @@ const cards: CardType[] = [
         src: '/hannibal.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'will',
@@ -16,7 +15,6 @@ const cards: CardType[] = [
         src: '/will.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'sonic',
@@ -24,7 +22,6 @@ const cards: CardType[] = [
         src: '/sonic.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'tails',
@@ -32,7 +29,6 @@ const cards: CardType[] = [
         src: '/tails.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'kakashi',
@@ -40,7 +36,6 @@ const cards: CardType[] = [
         src: '/kakashi.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'iruka',
@@ -48,7 +43,6 @@ const cards: CardType[] = [
         src: '/iruka.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'walter',
@@ -56,7 +50,6 @@ const cards: CardType[] = [
         src: '/walter.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'jesse',
@@ -64,7 +57,6 @@ const cards: CardType[] = [
         src: '/jesse.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'pepper',
@@ -72,7 +64,6 @@ const cards: CardType[] = [
         src: '/pepper.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'salt',
@@ -80,7 +71,6 @@ const cards: CardType[] = [
         src: '/salt.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'jayce',
@@ -88,7 +78,6 @@ const cards: CardType[] = [
         src: '/jayce.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'viktor',
@@ -96,7 +85,6 @@ const cards: CardType[] = [
         src: '/viktor.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'zuko',
@@ -104,7 +92,6 @@ const cards: CardType[] = [
         src: '/zuko.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'sokka',
@@ -112,7 +99,6 @@ const cards: CardType[] = [
         src: '/sokka.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'juanma',
@@ -120,7 +106,6 @@ const cards: CardType[] = [
         src: '/juanma.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'rodri',
@@ -128,7 +113,6 @@ const cards: CardType[] = [
         src: '/rodri.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'enderman',
@@ -136,7 +120,6 @@ const cards: CardType[] = [
         src: '/enderman.png',
         flipped: false,
         done: false,
-        show: false,
     },
     {
         id: 'golem',
@@ -144,7 +127,6 @@ const cards: CardType[] = [
         src: '/golem.png',
         flipped: false,
         done: false,
-        show: false,
     },
 ]
 
@@ -193,7 +175,7 @@ export const cardStore = create((set) => ({
                         cards: updatedCards,
                         done: newDone,
                         flippedCards: [...state.flippedCards, updatedCard1],
-                        won, // Actualizamos el valor de "won"
+                        won,
                     }
                 } else {
                     setTimeout(() => {
@@ -222,6 +204,6 @@ export const cardStore = create((set) => ({
             })).sort((() => Math.random() - 0.5)),
             flippedCards: [],
             done: [],
-            won: false
+            won: false,
         }))
 }))

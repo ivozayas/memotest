@@ -3,7 +3,7 @@
 import { cardStore } from "@/store/card";
 
 
-export default function Reset({ children }: { children?: React.ReactNode }){
+export default function ResetBtn({ children }: { children?: React.ReactNode }){
     const reset = cardStore((state: any) => state.resetGame)
 
     return (

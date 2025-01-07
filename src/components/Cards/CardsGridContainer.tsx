@@ -2,30 +2,34 @@
 
 import { cardStore } from "@/store/card";
 import CardsGrid from "./CardsGrid";
-import Reset from "./Reset";
+import Reset from "./ResetBtn";
 import Win from "./Win";
-
+import BtnContainer from "../BtnContainer";
+import Timer from "./Timer";
 
 export default function CardsGridContainer(){
-    const won = cardStore((state: any) => state.won)
+    const won = cardStore((state: any) => state.won),
+          cards = cardStore((state: any) => state.cards)
+
 
     return (
         <div className="flex flex-col justify-start items-center space-y-4">
-            <CardsGrid/>
+            <CardsGrid cards={cards}/>
 
-            {won &&
-                <div>
-                    <Reset
-                    children={
-                        <div className="flex justify-center items-center cardsinnerbg hover:brightness-125 duration-150 hover:shadow-[0px_1px_1px_1px_rgba(0,0,0,0.6)] shadow-[0px_1px_5px_3px_rgba(0,0,0,0.6)] rounded h-fit w-fit py-2 px-3 text-lg text-indigo-950">
-                            <p>VOLVER A JUGAR</p>
-                        </div>
-                    }
-                    />
+            <div className="flex flex-row items-center justify-center space-x-6">
+                <Timer/>
 
-                    <Win/>
-                </div>
-            }
+                {won &&
+                    <div>
+                        <Reset
+                            children={<BtnContainer children={<p className="px-3 py-1">VOLVER A JUGAR</p>}/>}
+                        />
+
+                        <Win/>
+                    </div>
+                }
+            </div>
+         
         </div>
     )
 }

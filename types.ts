@@ -4,5 +4,4 @@ export type CardType = {
     src: string;
     done: boolean;
     flipped: boolean;
-    show: boolean;
 };
