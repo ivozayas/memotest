@@ -1,6 +1,5 @@
 import { CardType } from "../../../types";
 import { cardStore } from "@/store/card";
-import Image from "next/image";
 import CardBack from "./CardBack";
 import CardFront from "./CardFront";
 

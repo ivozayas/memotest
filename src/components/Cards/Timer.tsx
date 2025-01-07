@@ -2,9 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { cardStore } from '@/store/card';
+import TimerText from './TimeText';
 
 export default function Timer(){
-    const won = cardStore((state: any) => state.won)
+    const won = cardStore((state: any) => state.won),
+          setTimes = cardStore((state: any) => state.setTimes)
+
 
     const [time, setTime] = useState(0)
     const intervalRef = useRef<number | NodeJS.Timeout | null>(null)
@@ -15,6 +18,8 @@ export default function Timer(){
             intervalRef.current = setInterval(() => {
             setTime((prevTime) => prevTime + 10)
             }, 10)
+        } else {
+            setTimes(formatTime(time))
         }
 
         return () => {
@@ -35,8 +40,6 @@ export default function Timer(){
         return `${pad(minutes)}:${pad(seconds)}:${pad(centiseconds)}`
     }
 
-    return (
-        <p className='text-2xl text-yellow-400'>{formatTime(time)}</p>
-    )
+    return <TimerText time={formatTime(time)} />
 }
     

@@ -135,6 +135,11 @@ export const cardStore = create((set) => ({
     flippedCards: [],
     done: [],
     won: false,
+    times: [],
+    setTimes: (time: string) => 
+        set((state: any) => ({
+            times: [time, ...state.times]
+        })),
     flipCard: (id: string) =>
         set((state: any) => {
             if (state.flippedCards.length >= state.done.length + 2) {

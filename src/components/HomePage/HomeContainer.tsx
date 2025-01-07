@@ -4,7 +4,6 @@ import { useState } from "react"
 import BtnContainer from "../BtnContainer";
 import HomeHeader from "./HomeHeader";
 import LinkBtn from "./LinkBtn";
-import Image from "next/image"
 
 export default function HomeContainer(){
     const [ show, setShow ] = useState<boolean>(false)
@@ -17,8 +16,11 @@ export default function HomeContainer(){
             { show && 
                 <LinkBtn
                     url="/memotest"
-                    children={<BtnContainer children={<p className="text-[2rem] mx-4 my-3">JUGAR</p>}/>}
-                />
+                >
+                    <BtnContainer>
+                        <p className="text-[2rem] mx-4 my-3">JUGAR</p>
+                    </BtnContainer>
+                </LinkBtn>
             }
         </div>
     )

@@ -21,9 +21,11 @@ export default function CardsGridContainer(){
 
                 {won &&
                     <div>
-                        <Reset
-                            children={<BtnContainer children={<p className="px-3 py-1">VOLVER A JUGAR</p>}/>}
-                        />
+                        <Reset>
+                            <BtnContainer>
+                                <p className="px-3 py-1">VOLVER A JUGAR</p>
+                            </BtnContainer>
+                        </Reset>        
 
                         <Win/>
                     </div>
