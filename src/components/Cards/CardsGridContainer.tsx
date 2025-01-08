@@ -8,9 +8,7 @@ import BtnContainer from "../BtnContainer";
 import Timer from "./Timer";
 
 export default function CardsGridContainer(){
-    const won = cardStore((state: any) => state.won),
-          cards = cardStore((state: any) => state.cards)
-
+    const { won, cards} = cardStore()
 
     return (
         <div className="flex flex-col justify-start items-center space-y-4">

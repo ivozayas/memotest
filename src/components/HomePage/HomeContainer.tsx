@@ -12,15 +12,17 @@ export default function HomeContainer(){
     return (
         <div className="flex flex-col justify-center items-center h-[80vh] space-y-6">
             <HomeHeader show={show} setShow={setShow}/>
-
-            { show && 
+        
+            { show ? 
                 <LinkBtn
                     url="/memotest"
                 >
                     <BtnContainer>
                         <p className="text-[2rem] mx-4 my-3">JUGAR</p>
                     </BtnContainer>
-                </LinkBtn>
+                </LinkBtn> :
+
+                <div className="w-[128px] h-[52px]"/>
             }
         </div>
     )

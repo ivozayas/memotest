@@ -5,9 +5,7 @@ import { cardStore } from '@/store/card';
 import TimerText from './TimeText';
 
 export default function Timer(){
-    const won = cardStore((state: any) => state.won),
-          setTimes = cardStore((state: any) => state.setTimes)
-
+    const { won, setTimes } = cardStore()
 
     const [time, setTime] = useState(0)
     const intervalRef = useRef<number | NodeJS.Timeout | null>(null)

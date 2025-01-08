@@ -4,9 +4,9 @@ import { cardStore } from "@/store/card";
 
 
 export default function ResetBtn({ children }: { children?: React.ReactNode }){
-    const reset = cardStore((state: any) => state.resetGame)
+    const { resetGame } = cardStore()
 
     return (
-        <button className="flex justify-center items-center" onClick={reset}>{ children }</button>
+        <button className="flex justify-center items-center" onClick={resetGame}>{ children }</button>
     )
 }

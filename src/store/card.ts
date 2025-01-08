@@ -1,6 +1,17 @@
 import { create } from "zustand";
 import { CardType } from "../../types";
 
+interface CardState {
+    cards: CardType[]
+    flippedCards: CardType[]
+    done: CardType[]
+    won: boolean
+    times: string[]
+    setTimes: (time: string) => void
+    flipCard: (id: string) => void
+    resetGame: () => void
+}
+
 const cards: CardType[] = [
     {
         id: 'hannibal',
@@ -130,18 +141,18 @@ const cards: CardType[] = [
     },
 ]
 
-export const cardStore = create((set) => ({
+export const cardStore = create<CardState>((set) => ({
     cards: cards.sort((() => Math.random() - 0.5)),
     flippedCards: [],
     done: [],
     won: false,
     times: [],
     setTimes: (time: string) => 
-        set((state: any) => ({
+        set((state) => ({
             times: [time, ...state.times]
         })),
     flipCard: (id: string) =>
-        set((state: any) => {
+        set((state) => {
             if (state.flippedCards.length >= state.done.length + 2) {
                 return state
             }
@@ -184,13 +195,13 @@ export const cardStore = create((set) => ({
                     }
                 } else {
                     setTimeout(() => {
-                        set((state: any) => ({
+                        set((state) => ({
                             cards: state.cards.map((card: CardType) =>
                                 card.id === card1.id || card.id === card2.id ? { ...card, flipped: false} : card
                             ),
                             flippedCards: state.flippedCards.slice(0, -2)
                         }))
-                    }, 500)
+                    }, 300)
                 }
             }
 
@@ -201,7 +212,7 @@ export const cardStore = create((set) => ({
             return { cards: curFlippedCard, flippedCards }
         }),
     resetGame: () =>
-        set((state: any) => ({
+        set((state) => ({
             cards: state.cards.map((card: CardType) => ({
                 ...card,
                 flipped: false,

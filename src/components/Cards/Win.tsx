@@ -12,8 +12,6 @@ export default function Win() {
 
         return () => clearTimeout(timer)
     }, [])
-
-    // if (!isVisible) return null
     
     return (
         <div
