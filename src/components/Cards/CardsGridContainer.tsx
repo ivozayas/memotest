@@ -6,6 +6,7 @@ import Reset from "./ResetBtn";
 import Win from "./Win";
 import BtnContainer from "../BtnContainer";
 import Timer from "./Timer";
+import { FaRedoAlt  } from "react-icons/fa";
 
 export default function CardsGridContainer(){
     const { won, cards} = cardStore()
@@ -17,7 +18,15 @@ export default function CardsGridContainer(){
             <div className="flex flex-row items-center justify-center space-x-6">
                 <Timer/>
 
-                {won &&
+                {/* { !won &&
+                    <Reset>
+                        <BtnContainer>
+                            <div className="px-3 py-1"><FaRedoAlt/></div>
+                        </BtnContainer>
+                    </Reset>
+                } */}
+
+                { won &&
                     <div>
                         <Reset>
                             <BtnContainer>
@@ -28,6 +37,7 @@ export default function CardsGridContainer(){
                         <Win/>
                     </div>
                 }
+                
             </div>
          
         </div>

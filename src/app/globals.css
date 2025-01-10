@@ -31,6 +31,25 @@ body {
   height: auto;
 }
 
+/* scrollbar */
+
+
+.scroll::-webkit-scrollbar, body::-webkit-scrollbar {
+  width: 8px;
+}
+.scroll::-webkit-scrollbar-track, body::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 5px;
+}
+.scroll::-webkit-scrollbar-thumb, body::-webkit-scrollbar-thumb {
+  background: yellow;
+  border-radius: 5px;
+}
+.scroll::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
+  background: yellow;
+}
+
+
 .cardsbg {
   background: radial-gradient(circle, rgb(26, 93, 236) 10%, rgb(19, 0, 81) 100%);
 }
